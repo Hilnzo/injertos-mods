@@ -6,11 +6,14 @@
   <title>Hilnzo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* ===========================
+       FUENTES Y ESTILO GENERAL
+    =========================== */
     body {
       margin: 0;
       background: url('https://i.imgur.com/MtMtUkM.jpeg') no-repeat center center fixed;
       background-size: cover;
-      font-family: "Courier New", monospace;
+      font-family: Arial, Helvetica, sans-serif; /* Fuente normal para todo */
       color: white;
       text-align: center;
       overflow-x: hidden;
@@ -24,10 +27,23 @@
       z-index: 2;
     }
 
-    p { font-size: 1.3rem; margin-bottom: 30px; font-weight: bold; position: relative; z-index: 2; }
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+    }
 
-    /* Redes sociales */
-    .socials { margin-top: 20px; position: relative; z-index: 2; }
+    /* ===========================
+       REDES SOCIALES
+    =========================== */
+    .socials {
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
     .socials a {
       display: inline-block;
       margin: 10px;
@@ -37,26 +53,52 @@
       text-decoration: none;
       font-size: 1.2rem;
       font-weight: bold;
+      font-family: "Courier New", monospace; /* Fuente máquina solo aquí */
       transition: all 0.3s ease-in-out;
       box-shadow: 0 0 8px rgba(255,255,255,0.3);
     }
-    .socials a i { margin-right: 8px; font-size: 1.3rem; }
-    .socials a:hover { transform: scale(1.08); box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor; }
+
+    .socials a i {
+      margin-right: 8px;
+      font-size: 1.3rem;
+    }
+
+    .socials a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor;
+    }
+
     .socials a.spotify { background: #1DB954; }
     .socials a.steam { background: #171A21; }
     .socials a.roblox { background: #FF4757; }
     .socials a.discord { background: #5865F2; }
 
-    /* Botón música */
+    /* ===========================
+       BOTÓN DE MÚSICA
+    =========================== */
     .music-btn {
-      margin-top: 30px; padding: 10px 20px; border: 2px solid white;
-      border-radius: 10px; background: transparent; color: white;
-      font-size: 1.1rem; cursor: pointer; transition: 0.3s;
-      position: relative; z-index: 2;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      z-index: 2;
     }
-    .music-btn:hover { background: red; border-color: red; color: black; }
 
-    /* Layout principal en PC */
+    .music-btn:hover {
+      background: red;
+      border-color: red;
+      color: black;
+    }
+
+    /* ===========================
+       LAYOUT PRINCIPAL
+    =========================== */
     .layout {
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
@@ -64,13 +106,16 @@
       margin-top: 40px;
     }
 
-    /* STAFF */
+    /* ===========================
+       STAFF
+    =========================== */
     .staff-col {
       display: flex;
       flex-direction: column;
       gap: 20px;
       align-items: center;
     }
+
     .card {
       background: #111;
       padding: 15px;
@@ -80,14 +125,25 @@
       box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);
       animation: glow 2s infinite alternate;
     }
+
     @keyframes glow {
       from { box-shadow: 0 0 10px red; }
       to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}
     }
-    .card img { border-radius: 50%; width: 80px; height: 80px; margin-bottom: 8px; border: 2px solid red; }
+
+    .card img {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 8px;
+      border: 2px solid red;
+    }
+
     .card .role { font-size: 13px; color: #bbb; }
 
-    /* Sección aporte */
+    /* ===========================
+       APORTE
+    =========================== */
     .aporte {
       background: rgba(0, 0, 0, 0.7);
       padding: 30px;
@@ -101,23 +157,53 @@
       line-height: 1.8;
       letter-spacing: 0.5px;
       text-align: left;
+      font-family: Arial, Helvetica, sans-serif; /* Fuente normal */
     }
-    .aporte:hover { box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1); }
-    .aporte h2 { font-size: 2rem; color: red; margin-bottom: 15px; text-align: center; }
-    .aporte video { width: 100%; border-radius: 10px; margin-top: 20px; }
-    .download-btn {
-      display: inline-block; margin-top: 20px; padding: 12px 25px;
-      background: red; color: white; font-weight: bold;
-      border-radius: 12px; text-decoration: none; font-size: 1.2rem;
-      transition: 0.3s; box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);
-    }
-    .download-btn:hover { background: darkred; box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red; }
 
-    /* RESPONSIVE */
+    .aporte:hover {
+      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1);
+    }
+
+    .aporte h2 {
+      font-size: 2rem;
+      color: red;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .aporte video {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: red;
+      color: white;
+      font-weight: bold;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);
+    }
+
+    .download-btn:hover {
+      background: darkred;
+      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
     @media (max-width: 768px) {
       .layout {
         display: block;
       }
+
       .staff-col {
         flex-direction: row;
         overflow-x: auto;
@@ -125,6 +211,7 @@
         padding: 10px;
         scroll-snap-type: x mandatory;
       }
+
       .card {
         flex: 0 0 auto;
         width: 130px;
@@ -139,11 +226,10 @@
 
   <!-- Redes sociales -->
   <div class="socials">
-    <a href="https://open.spotify.com/user/31mtjz2i5m63xek4cp4pevznd74i" target="_blank" class="spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
-    <a href="https://steamcommunity.com/profiles/76561199805784382/" target="_blank" class="steam"><i class="fa-brands fa-steam"></i> Steam</a>
-    <a href="https://www.roblox.com/es/users/9207271059/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
-    <a href="https://discordapp.com/users/1298301131641983019" target="_blank" class="discord"><i class="fa-brands fa-discord"></i> Discord</a>
-    <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - INJERTOS MODS</a>
+    <a href="#" class="spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
+    <a href="#" class="steam"><i class="fa-brands fa-steam"></i> Steam</a>
+    <a href="#" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
+    <a href="#" class="discord"><i class="fa-brands fa-discord"></i> Discord</a>
   </div>
 
   <!-- Música -->
@@ -152,16 +238,18 @@
   </audio>
   <button class="music-btn" onclick="toggleMusic()">sonido - angel caido</button>
 
-  <!-- Layout -->
+  <!-- Layout principal -->
   <div class="layout">
-    <!-- Staff Izquierda -->
+    <!-- STAFF izquierda -->
     <div class="staff-col">
-      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.png"><p><b>Hilnzo</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1354865570880946176/avatars/27e176d0ac337ce28c7d5177014aff87.png"><p><b>Kalcor</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>Drago</b></p><p class="role">DUEÑO</p></div>
+      <div class="card">
+        <img src="#" alt="Hilnzo">
+        <p><b>Hilnzo</b></p>
+        <p class="role">DUEÑO</p>
+      </div>
     </div>
 
-    <!-- Aportes en medio -->
+    <!-- Aportes -->
     <div>
       <div class="aporte">
         <h2>Tiffany</h2>
@@ -169,26 +257,20 @@
         <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
         <p><b>Incluye:</b> macros, barra de estamina, gamefixer, hit maker, sonido de campana, efectos, armas y más.</p>
         <p><b>Contraseña:</b> <span style="color: red; font-weight: bold;">tiffanyctmr</span></p>
-        <video controls><source src="https://files.catbox.moe/7z0rtz.mp4" type="video/mp4"></video>
-        <a href="https://www.mediafire.com/file/wsiz41zichaeqxo/Tiffany.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+        <video controls><source src="#" type="video/mp4"></video>
+        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
       </div>
 
-      <div class="aporte">
-        <h2>VERSION R5 INJERTOS MODS</h2>
-        <p><b>Descripción:</b> unos de los aportes que menos me gusto crear por ser R5 ya que no es compatible con nada.</p>
-        <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
-        <p><b>Incluye:</b> El aporte esta limpio el R5 no permite muchos cleos o .asi).</p>
-        <p><b>Contraseña:</b> <span style="color: red; font-weight: bold;">injertosr5</span></p>
-        <video controls><source src="https://files.catbox.moe/vlkt2e.mp4" type="video/mp4"></video>
-        <a href="https://www.mediafire.com/file/wsgq5q0r3su9hzo/version_R5_injertos_mods.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
+      <!-- AQUI PUEDES AGREGAR NUEVOS APORTES -->
     </div>
 
-    <!-- Staff Derecha -->
+    <!-- STAFF derecha -->
     <div class="staff-col">
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1298942723847622690/7013e30ca714c9548128b99534035e3c.png"><p><b>Manzer</b></p><p class="role">SUB ENCARGADO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/66c48f30b95b7b331c48196b31fb7282.png"><p><b>Maik</b></p><p class="role">ADMIN</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1308947599235223637/33e70b76635a92bb402ef28fd32dad77.png"><p><b>Zair</b></p><p class="role">HELPER</p></div>
+      <div class="card">
+        <img src="#" alt="Manzer">
+        <p><b>Manzer</b></p>
+        <p class="role">SUB ENCARGADO</p>
+      </div>
     </div>
   </div>
 
