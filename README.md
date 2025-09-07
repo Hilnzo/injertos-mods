@@ -1,5 +1,3 @@
-      =========================== -->
-    <div class="aporte">
   <h2>ROJO SANGRE</h2>
   <p><b>Este aporte es exclusivamente de injertos mods:</b> aquí va la descripción de tu aporte, explicando qué contiene y para qué sirve.</p>
   <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
