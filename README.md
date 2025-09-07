@@ -1,9 +1,7 @@
-@ -274,13 +274,13 @@ <h2>VERSION R5 INJERTOS MODS</h2>
-           AQUI PUEDES AGREGAR NUEVOS APORTES
       =========================== -->
     <div class="aporte">
-  <h2>NOMBRE DEL APORTE</h2>
-  <p><b>Descripción:</b> aquí va la descripción de tu aporte, explicando qué contiene y para qué sirve.</p>
+  <h2>ROJO SANGRE</h2>
+  <p><b>Este aporte es exclusivamente de injertos mods:</b> aquí va la descripción de tu aporte, explicando qué contiene y para qué sirve.</p>
   <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
   <h2>DataBlue🔵MR$</h2>
   <p><b>Descripción:</b> .</p>
