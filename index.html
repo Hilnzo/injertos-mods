@@ -2,210 +2,261 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Injertos Mods - Aportes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hilnzo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://i.imgur.com/6IUB0lA.jpg') no-repeat center center fixed;
+      background: url('https://i.imgur.com/MtMtUkM.jpeg') no-repeat center center fixed;
       background-size: cover;
+      font-family: Arial, Helvetica, sans-serif;
       color: white;
-      text-shadow: 2px 2px 8px red;
+      text-align: center;
+      overflow-x: hidden;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 20px;
+      text-shadow: 2px 2px 8px red;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Redes sociales */
+    .socials {
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .socials a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: "Courier New", monospace;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+
+    .socials a i { margin-right: 8px; font-size: 1.3rem; }
+    .socials a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor;
+    }
+    .socials a.spotify { background: #1DB954; }
+    .socials a.steam { background: #171A21; }
+    .socials a.roblox { background: #FF4757; }
+    .socials a.discord { background: #5865F2; }
+
+    /* Botón música */
+    .music-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+    .music-btn:hover { background: red; border-color: red; color: black; }
+
+    /* Layout */
     .layout {
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
       gap: 20px;
-      padding: 20px;
+      margin-top: 40px;
     }
+
+    /* Staff */
     .staff-col {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      align-items: center;
     }
-    .staff-card {
-      background: rgba(0,0,0,0.7);
+    .card {
+      background: #111;
       padding: 15px;
-      border: 2px solid red;
-      border-radius: 10px;
-      box-shadow: 0 0 15px red;
+      border-radius: 12px;
+      width: 150px;
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);
+      animation: glow 2s infinite alternate;
     }
-    .staff-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px white;
+    @keyframes glow {
+      from { box-shadow: 0 0 10px red; }
+      to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}
     }
-    .staff-card img {
-      width: 100%;
-      border-radius: 8px;
+    .card img {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 8px;
+      border: 2px solid red;
     }
+    .card .role { font-size: 13px; color: #bbb; }
+
+    /* Aportes */
     .aportes-col {
       display: flex;
       flex-direction: column;
       gap: 40px;
     }
     .aporte {
-      background: rgba(0,0,0,0.7);
-      padding: 20px;
-      border: 2px solid red;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 0 20px red;
+      border: 2px solid red;
+      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 60px rgba(255, 0, 0, 0.8);
+      transition: 0.3s;
+      position: relative;
+      z-index: 2;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+    .aporte:hover {
+      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1);
     }
     .aporte h2 {
+      font-size: 2rem;
+      color: red;
+      margin-bottom: 15px;
       text-align: center;
-      color: #ff4d4d;
-      margin-bottom: 10px;
     }
+
+    /* Video YouTube responsivo */
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 10px;
-      margin: 15px 0;
+      margin-top: 20px;
     }
     .video-wrapper iframe {
       position: absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
+
     .download-btn {
       display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
       background: red;
       color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s, box-shadow 0.3s;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);
     }
     .download-btn:hover {
       background: darkred;
-      box-shadow: 0 0 15px white;
+      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
     }
-    .music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.7);
-      border: 2px solid red;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 0 15px red;
-      font-size: 24px;
-    }
-    @media(max-width:900px){
-      .layout {
-        grid-template-columns: 1fr;
-      }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .layout { display: block; }
       .staff-col {
         flex-direction: row;
         overflow-x: auto;
+        gap: 15px;
+        padding: 10px;
+        scroll-snap-type: x mandatory;
+      }
+      .card {
+        flex: 0 0 auto;
+        width: 130px;
+        scroll-snap-align: start;
       }
     }
   </style>
 </head>
 <body>
+  <h1>HILNZO</h1>
+  <p>"crece sin hacerle daño a alguien sin que se lo merezca"</p>
 
+  <!-- Redes -->
+  <div class="socials">
+    <a href="https://open.spotify.com/user/31mtjz2i5m63xek4cp4pevznd74i" target="_blank" class="spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
+    <a href="https://steamcommunity.com/profiles/76561199805784382/" target="_blank" class="steam"><i class="fa-brands fa-steam"></i> Steam</a>
+    <a href="https://www.roblox.com/es/users/9207271059/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
+    <a href="https://discordapp.com/users/1298301131641983019" target="_blank" class="discord"><i class="fa-brands fa-discord"></i> Discord</a>
+    <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - INJERTOS MODS</a>
+  </div>
+
+  <!-- Música -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://files.catbox.moe/vf3nc4.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" onclick="toggleMusic()">sonido - angel caido</button>
+
+  <!-- Layout -->
   <div class="layout">
-
-    <!-- Staff Izquierda -->
+    <!-- Staff izquierda -->
     <div class="staff-col">
-      <div class="staff-card"><h3>Hilnzo</h3><img src="https://i.imgur.com/0wQwQxX.jpg" alt="Hilnzo"></div>
-      <div class="staff-card"><h3>Kalcor</h3><img src="https://i.imgur.com/qmUK0cK.jpg" alt="Kalcor"></div>
-      <div class="staff-card"><h3>Kairox</h3><img src="https://i.imgur.com/0kwrtjh.jpg" alt="Kairox"></div>
-      <div class="staff-card"><h3>Jacob</h3><img src="https://i.imgur.com/2fN1Q5u.jpg" alt="Jacob"></div>
+      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.png"><p><b>Hilnzo</b></p><p class="role">DUEÑO</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1354865570880946176/avatars/5986239fed096a6beb8d2998bd1ac729.png"><p><b>Kalcor</b></p><p class="role">DUEÑO</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>KAIROX</b></p><p class="role">DUEÑO</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/avatars/1221849688593137830/ccbeb578b68bd02a4b19dc1ddd506842.png"><p><b>JACOB</b></p><p class="role">DUEÑO</p></div>
     </div>
 
     <!-- Aportes -->
     <div class="aportes-col">
-
+      <!-- Cada aporte -->
       <div class="aporte">
         <h2>TIFFANY</h2>
-        <p><b>DESCRIPCIÓN:</b> Injertos modificados Tiffany, versión ligera y estable.</p>
-        <p><b>Aviso:</b> Aporte limpio y verificado.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0nE2-hsY5Mk" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
+        <p><b>DESCRITPCION:</b> aporte para los demeros jodidos hecho por Hilnzo (@klenoz).</p>
+        <p>Si descargas este aporte por otro lugar que no sea mi discord de aportes o sampmods, es que no es mío y fue modificado.</p>
+        <p><b>INCLUYE:</b> macros, barra de estamina, gamefixer, hit maker, sonido de campana, efectos, armas y más.</p>
+        <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">tiffanyctmr</span></p>
+        <div class="video-wrapper">
+          <iframe src="https://youtube.com/embed/1Iq2YeDLVmM" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <a href="https://www.mediafire.com/file/wsiz41zichaeqxo/Tiffany.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
       </div>
 
-      <div class="aporte">
-        <h2>DRUKS</h2>
-        <p><b>DESCRIPCIÓN:</b> Paquete Druks optimizado con texturas HD.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dgWY1xU92nM" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
-      <div class="aporte">
-        <h2>VERSION R5</h2>
-        <p><b>DESCRIPCIÓN:</b> Versión R5 completa con mejoras gráficas y fixes.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/bN5nBbs6kYc" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
-      <div class="aporte">
-        <h2>DataBlue</h2>
-        <p><b>DESCRIPCIÓN:</b> DataBlue configurado para máximo rendimiento.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/TzcfvGvkpzY" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
-      <div class="aporte">
-        <h2>Rojo Sangre</h2>
-        <p><b>DESCRIPCIÓN:</b> Tema oscuro con detalles rojos brillantes.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/jcE7PK5EKeI" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
-      <div class="aporte">
-        <h2>Dayron Gotic</h2>
-        <p><b>DESCRIPCIÓN:</b> Estilo gótico inspirado en Dayron.</p>
-        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/CMgfHTCqiec" frameborder="0" allowfullscreen></iframe></div>
-        <a href="#" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
-      <div class="aporte">
-        <h2>BRUTALITY</h2>
-        <p><b>DESCRIPCIÓN:</b> VERSION R4 - INJERTOS MODS - BRUTALITY MATAR SIN PENSARLO.</p>
-        <p><b>Aviso:</b> aporte limpio y verificado, puedes encontrar más en nuestro discord.</p>
-        <p><b>AVISO:</b> JACOB</p>
-        <p><b>INCLUYE:</b> armas, vehículos, /sensa y /macros.</p>
-        <p><b>CONTRASEÑA:</b> <span style="color:red;font-weight:bold;">NO TIENE CONTRASEÑA</span></p>
-        <div class="video-wrapper"><iframe src="https://youtube.com/embed/fmVS7-nTmD4" frameborder="0" allowfullscreen></iframe></div>
-        <a href="https://www.mediafire.com/file/rj4hc064ibyu767/BRUTALITY.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
-      </div>
-
+      <!-- Aquí puedes seguir copiando más <div class="aporte"> ... </div> -->
     </div>
 
-    <!-- Staff Derecha -->
+    <!-- Staff derecha -->
     <div class="staff-col">
-      <div class="staff-card"><h3>Manzer</h3><img src="https://i.imgur.com/odtFVKy.jpg" alt="Manzer"></div>
-      <div class="staff-card"><h3>Maik</h3><img src="https://i.imgur.com/9Eqmxox.jpg" alt="Maik"></div>
-      <div class="staff-card"><h3>Zair</h3><img src="https://i.imgur.com/kKQf3po.jpg" alt="Zair"></div>
-      <div class="staff-card"><h3>Dayron</h3><img src="https://i.imgur.com/bI42Gvn.jpg" alt="Dayron"></div>
+      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298942723847622690/avatars/3a3d7b727f6d8b018dcc639c260e49f8.png"><p><b>Manzer</b></p><p class="role">SUB ENCARGADO</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/66c48f30b95b7b331c48196b31fb7282.png"><p><b>Maik</b></p><p class="role">ADMIN</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/avatars/1308947599235223637/ac79495194906156d3116496e4c7c72d.png"><p><b>Zair</b></p><p class="role">MODERADOR</p></div>
+      <div class="card"><img src="https://cdn.discordapp.com/avatars/1216152197277159535/957b02311b279cf298f0775eb5c4be04.png"><p><b>Dayron</b></p><p class="role">MODERADOR</p></div>
     </div>
-
   </div>
 
-  <!-- Música Ángel Caído -->
-  <audio id="bg-music" src="https://www.dropbox.com/scl/fi/3gn2pkkgfkp7s7u8c7jrh/Angel-Caido.mp3?dl=1" autoplay loop></audio>
-  <div class="music-control" onclick="toggleMusic()">🎵</div>
-
   <script>
-    const music = document.getElementById('bg-music');
-    let playing = true;
-    function toggleMusic(){
-      if(playing){ music.pause(); playing=false; }
-      else { music.play(); playing=true; }
+    function toggleMusic() {
+      const music = document.getElementById("bg-music");
+      if (music.paused) music.play(); else music.pause();
     }
   </script>
-
 </body>
 </html>
