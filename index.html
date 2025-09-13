@@ -8,12 +8,23 @@
   <style>  
     body {  
       margin: 0;  
-      background: url('https://i.imgur.com/kXp9RhC.jpeg') no-repeat center center fixed;  
-      background-size: cover;  
       font-family: Arial, Helvetica, sans-serif;  
       color: white;  
       text-align: center;  
       overflow-x: hidden;  
+      position: relative;  
+    }  
+
+    /* Contenedor de fondo */  
+    .background-container {  
+      position: fixed;  
+      top: 0;  
+      left: 0;  
+      width: 100%;  
+      height: 100%;  
+      background: url('https://i.imgur.com/kXp9RhC.jpeg') no-repeat center center;  
+      background-size: cover;  
+      z-index: -1;  
     }  
 
     h1 {  
@@ -63,9 +74,9 @@
     .socials a.roblox { background: #FF4757; }  
     .socials a.discord { background: #5865F2; }  
 
-    /* Botón música - Estados dinámicos + animación */
+    /* Botón música - Estados dinámicos + animación */  
     .music-btn {  
-      margin-top: 30px;  
+      margin: 30px auto; /* Centrado horizontalmente */  
       padding: 10px 20px;  
       border: 2px solid white;  
       border-radius: 10px;  
@@ -359,6 +370,7 @@
   </style>  
 </head>  
 <body>  
+  <div class="background-container"></div>  
 
   <!-- GIF de entrada -->  
   <div id="intro-overlay">  
@@ -390,11 +402,11 @@
     <div class="layout">  
       <!-- Staff izquierda -->  
       <div class="staff-col">  
-         <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.gif"><p><b>HILNZO</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1354865570880946176/avatars/5986239fed096a6beb8d2998bd1ac729.png"><p><b>KALCOR</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>KAIROX</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1221849688593137830/ccbeb578b68bd02a4b19dc1ddd506842.png"><p><b>JACOB</b></p><p class="role">DUEÑO</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298942723847622690/avatars/3a3d7b727f6d8b018dcc639c260e49f8.png"><p><b>MANZER</b></p><p class="role">DUEÑO</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.gif"><p><b>HILNZO</b></p><p class="role">DUEÑO</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1354865570880946176/avatars/5986239fed096a6beb8d2998bd1ac729.png"><p><b>KALCOR</b></p><p class="role">DUEÑO</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>KAIROX</b></p><p class="role">DUEÑO</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1221849688593137830/ccbeb578b68bd02a4b19dc1ddd506842.png"><p><b>JACOB</b></p><p class="role">DUEÑO</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298942723847622690/avatars/3a3d7b727f6d8b018dcc639c260e49f8.png"><p><b>MANZER</b></p><p class="role">DUEÑO</p></div>  
       </div>  
 
       <!-- APORTES -->  
@@ -485,26 +497,25 @@
             <iframe src="https://www.youtube.com/embed/FPXuZPFyCd8" frameborder="0" allowfullscreen id="youtube-video-7"></iframe>  
           </div>  
           <a href="https://www.mediafire.com/file/6d06kpjwz836nu8/DRUKS.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>  
-            </div><!-- Plantillas vacías para copiar -->  
-          
+        </div>  
       </div>  
 
       <!-- Staff derecha -->  
       <div class="staff-col">  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/66c48f30b95b7b331c48196b31fb7282.png"><p><b>Maik</b></p><p class="role">ADMIN</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/933010372120698890/832e04104fa6be337f009700a914c7f3.png"><p><b>David</b></p><p class="role">HEAD MODERADOR</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1308947599235223637/ac79495194906156d3116496e4c7c72d.png"><p><b>Zair</b></p><p class="role">HEAD MODERADOR</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1386421165052002366/a_e752489e8b37d4af5efefbb1bb796f40.gif"><p><b>Veloz</b></p><p class="role">STAR HELPER</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace659cec1ef.png"><p><b>infi</b></p><p class="role">STAR HELPER</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1378867547394408470/16c25c75f2c2b78f72b57ba2be733215.png"><p><b>Daniel</b></p><p class="role">STAR HELPER</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/819972541925425202/5f37b46166d6a8848ba5ee22c32454b7.png"><p><b>Shelby</b></p><p class="role">STAR HELPER</p></div>
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1122922371699974144/bb813d792026bb69e0a2a4130d13540f.png"><p><b>Diego</b></p><p class="role">STAR HELPER</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/66c48f30b95b7b331c48196b31fb7282.png"><p><b>Maik</b></p><p class="role">ADMIN</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/933010372120698890/832e04104fa6be337f009700a914c7f3.png"><p><b>David</b></p><p class="role">HEAD MODERADOR</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1308947599235223637/ac79495194906156d3116496e4c7c72d.png"><p><b>Zair</b></p><p class="role">HEAD MODERADOR</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1386421165052002366/a_e752489e8b37d4af5efefbb1bb796f40.gif"><p><b>Veloz</b></p><p class="role">STAR HELPER</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace659cec1ef.png"><p><b>infi</b></p><p class="role">STAR HELPER</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1378867547394408470/16c25c75f2c2b78f72b57ba2be733215.png"><p><b>Daniel</b></p><p class="role">STAR HELPER</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/819972541925425202/5f37b46166d6a8848ba5ee22c32454b7.png"><p><b>Shelby</b></p><p class="role">STAR HELPER</p></div>  
+        <div class="card"><img src="https://cdn.discordapp.com/avatars/1122922371699974144/bb813d792026bb69e0a2a4130d13540f.png"><p><b>Diego</b></p><p class="role">STAR HELPER</p></div>  
       </div>  
     </div>  
   </div>  
 
   <!-- Botón Sharingan -->  
-  <div class="sharingan-btn" onclick="activarSharingan(event)">  
+  <div class="sharingan-btn" onclick="activarSharingan()">  
     <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" alt="Sharingan">  
   </div>  
 
@@ -553,9 +564,7 @@
       bgMusic.play();  
     }  
 
-    function activarSharingan(event) {  
-      event.preventDefault();  
-      event.stopPropagation();  
+    function activarSharingan() {  
       const overlay = document.getElementById("sharingan-overlay");  
       const sound = document.getElementById("sharingan-sound");  
 
@@ -575,7 +584,7 @@
 
     // Función para manejar la API de YouTube  
     function onYouTubeIframeAPIReady() {  
-      const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7', 'youtube-video-8', 'youtube-video-9', 'youtube-video-10', 'youtube-video-11'];  
+      const videoIds = ['youtube-video-1', 'youtube-video-2', 'youtube-video-3', 'youtube-video-4', 'youtube-video-5', 'youtube-video-6', 'youtube-video-7'];  
 
       videoIds.forEach((id) => {  
         if (document.getElementById(id)) {  
