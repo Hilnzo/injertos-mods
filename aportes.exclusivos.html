@@ -8,12 +8,98 @@
   <style>
     body {
       margin: 0;
-      background: url('https://i.imgur.com/ZSKMRE8.jpeg') no-repeat center center fixed;
+      background: url('https://i.imgur.com/ZSKMRE8.jpeg') no-repeat center center;
       background-size: cover;
+      background-attachment: scroll;
       font-family: Arial, Helvetica, sans-serif;
       color: white;
       text-align: center;
       overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Overlay de contraseña inicial */
+    #password-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000; /* Fondo sólido negro para cubrir todo */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000; /* Z-index extremadamente alto */
+      padding: 20px;
+    }
+    #password-overlay .blocker {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: -1;
+    }
+    #password-overlay .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+    #password-overlay .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+    }
+    #password-overlay img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      image-rendering: pixelated;
+      margin-bottom: 20px;
+    }
+    #password-overlay p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      width: 90%;
+      max-width: 400px;
+    }
+    #password-overlay input {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: 2px solid red;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      margin-bottom: 15px;
+      width: 80%;
+      max-width: 300px;
+      z-index: 1;
+    }
+    #password-overlay button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+      transition: 0.3s;
+      z-index: 1;
+      width: 150px;
+    }
+    #password-overlay button:hover {
+      background: darkred;
+      box-shadow: 0 0 20px red;
     }
 
     h1 {
@@ -63,7 +149,7 @@
     .socials a.discord { background: #5865F2; }
 
     .music-btn {
-      margin-top: 30px;
+      margin: 30px auto 20px;
       padding: 10px 20px;
       border: 2px solid white;
       border-radius: 10px;
@@ -71,11 +157,44 @@
       color: white;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
       position: relative;
       z-index: 2;
+      display: block;
+      width: fit-content;
     }
-    .music-btn:hover { background: red; border-color: red; color: black; }
+    .music-btn i { margin-right: 8px; }
+    .music-btn:hover { transform: scale(1.05); }
+    .music-btn:active { transform: scale(0.98); }
+
+    .music-btn.paused {
+      background: transparent;
+      border-color: white;
+      color: white;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    .music-btn.paused:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ccc;
+    }
+
+    .music-btn.playing {
+      background: red;
+      border-color: red;
+      color: white;
+      box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
+      animation: pulse 1.5s infinite alternate;
+    }
+    .music-btn.playing:hover {
+      background: darkred;
+      border-color: darkred;
+      box-shadow: 0 0 15px red, 0 0 30px rgba(255, 0, 0, 1);
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8); transform: scale(1); }
+      to { box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 1); transform: scale(1.02); }
+    }
 
     .layout {
       display: grid;
@@ -101,7 +220,7 @@
     }
     @keyframes glow {
       from { box-shadow: 0 0 10px red; }
-      to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9);}
+      to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9); }
     }
     .card img {
       border-radius: 50%;
@@ -182,6 +301,13 @@
         width: 130px;
         scroll-snap-align: start;
       }
+      #password-overlay input {
+        width: 70%;
+        max-width: 250px;
+      }
+      #password-overlay button {
+        width: 120px;
+      }
     }
 
     .sharingan-btn {
@@ -192,26 +318,34 @@
       height: 50px;
       cursor: pointer;
       z-index: 1000;
+      outline: none;
+      border: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
     }
     .sharingan-btn img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      animation: spin 4s linear infinite, glowRed 1.5s infinite alternate;
+      animation: spin 4s linear infinite, glowWhiteRed 1.5s infinite alternate;
+      filter: brightness(1.5) contrast(1.5);
     }
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    @keyframes glowRed {
-      from { box-shadow: 0 0 5px red; }
-      to { box-shadow: 0 0 20px red, 0 0 40px red; }
+    @keyframes glowWhiteRed {
+      from { box-shadow: 0 0 5px white, 0 0 10px red; }
+      to { box-shadow: 0 0 20px white, 0 0 40px red; }
     }
 
     #sharingan-overlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100vw; height: 100vh;
       background: black;
       display: flex;
       align-items: center;
@@ -225,6 +359,8 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
+      image-rendering: pixelated;
+      filter: brightness(1.5) sepia(0.2) hue-rotate(0deg);
     }
     #sharingan-overlay.active {
       opacity: 1;
@@ -233,6 +369,19 @@
   </style>
 </head>
 <body>
+  <!-- Overlay de contraseña inicial -->
+  <div id="password-overlay">
+    <div class="blocker"></div>
+    <div class="content-wrapper">
+      <div class="content">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" id="password-img" alt="Intro GIF">
+        <p>Si tienes el rol Padrino en el servidor de Injertos, sabes la contraseña. Ingresa la contraseña</p>
+        <input type="password" id="pass-input" placeholder="Contraseña">
+        <button onclick="checkPassword()">Entrar</button>
+      </div>
+    </div>
+  </div>
+
   <h1>APORTES EXCLUSIVOS</h1>
   <p>"PROXIMAMENTE"</p>
 
@@ -244,10 +393,10 @@
     <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - INJERTOS MODS</a>
   </div>
 
-  <audio id="bg-music" autoplay loop>
+  <audio id="bg-music" loop>
     <source src="https://files.catbox.moe/0sxa7b.mp3" type="audio/mpeg">
   </audio>
-  <button class="music-btn" onclick="toggleMusic()">Sonido - Ángel Caído</button>
+  <button class="music-btn paused" id="musicToggle" onclick="toggleMusic()"><i class="fa-solid fa-play"></i> Música Apagada</button>
 
   <div class="layout">
     <div class="staff-col">
@@ -301,12 +450,48 @@
   </audio>
 
   <script>
-    function toggleMusic() {
-      const music = document.getElementById("bg-music");
-      if (!music) return;
-      if (music.paused) music.play(); else music.pause();
+    // Verificación de contraseña
+    function checkPassword() {
+      const pass = document.getElementById('pass-input').value;
+      const correctPass = 'padrino2025'; // Cambia esta contraseña por la del rol Padrino
+      const overlay = document.getElementById('password-overlay');
+      const img = document.getElementById('password-img');
+      const p = overlay.querySelector('p');
+      const music = document.getElementById('bg-music');
+      const btn = document.getElementById('musicToggle');
+
+      if (pass === correctPass) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restaura el scroll
+        music.play().catch(() => {});
+        btn.classList.remove('paused');
+        btn.classList.add('playing');
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Música Encendida';
+      } else {
+        img.src = 'https://media.giphy.com/media/l0HlRN7ndVF76E4Xw/giphy.gif';
+        p.textContent = 'No es la contraseña, compay. Mejor boostea el servidor de Discord y consigue la contraseña';
+        document.getElementById('pass-input').value = '';
+      }
     }
 
+    // Toggle música
+    function toggleMusic() {
+      const music = document.getElementById('bg-music');
+      const btn = document.getElementById('musicToggle');
+      if (music.paused) {
+        music.play();
+        btn.classList.remove('paused');
+        btn.classList.add('playing');
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Música Encendida';
+      } else {
+        music.pause();
+        btn.classList.remove('playing');
+        btn.classList.add('paused');
+        btn.innerHTML = '<i class="fa-solid fa-play"></i> Música Apagada';
+      }
+    }
+
+    // YouTube API
     function onYouTubeIframeAPIReady() {
       const iframes = document.querySelectorAll('iframe');
       iframes.forEach((iframe, i) => {
@@ -315,10 +500,13 @@
         new YT.Player(iframe.id, {
           events: {
             'onStateChange': function(event) {
-              const music = document.getElementById("bg-music");
+              const music = document.getElementById('bg-music');
+              const btn = document.getElementById('musicToggle');
               if (event.data === YT.PlayerState.PLAYING) {
                 try { music.pause(); } catch (e) {}
-                sessionStorage.setItem('showBgMusic', 'false');
+                btn.classList.remove('playing');
+                btn.classList.add('paused');
+                btn.innerHTML = '<i class="fa-solid fa-play"></i> Música Apagada';
               }
             }
           }
@@ -326,41 +514,45 @@
       });
     }
 
-    (function loadYT(){
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
+    (function loadYT() {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
       document.body.appendChild(tag);
     })();
 
+    // Activación Sharingan
     function activarSharingan() {
-      const overlay = document.getElementById("sharingan-overlay");
-      const sound = document.getElementById("sharingan-sound");
-      const bg = document.getElementById("bg-music");
+      const overlay = document.getElementById('sharingan-overlay');
+      const sound = document.getElementById('sharingan-sound');
+      const bg = document.getElementById('bg-music');
 
-      overlay.classList.add("active");
+      overlay.classList.add('active');
       sound.currentTime = 0;
-      sound.play().catch(()=>{});
+      sound.play().catch(() => {});
 
-      sessionStorage.setItem("showBgMusic", "true");
-      try { if (bg && !bg.paused) bg.pause(); } catch(e){}
+      sessionStorage.setItem('showBgMusic', 'true');
+      try { if (bg && !bg.paused) bg.pause(); } catch (e) {}
 
       setTimeout(() => {
-        sessionStorage.setItem("sharinganActivo", "true");
-        window.location.href = "https://discord.gg/FfdkshS5ye";
+        sessionStorage.setItem('sharinganActivo', 'true');
+        window.location.href = 'https://discord.gg/FfdkshS5ye';
       }, 3000);
     }
 
+    // Cierre Sharingan
     function cerrarSharingan() {
-      const overlay = document.getElementById("sharingan-overlay");
-      overlay.classList.remove("active");
+      const overlay = document.getElementById('sharingan-overlay');
+      overlay.classList.remove('active');
     }
 
-    window.addEventListener("load", () => {
-      if (sessionStorage.getItem("sharinganActivo")) {
+    // Cargar estado inicial
+    window.addEventListener('load', () => {
+      document.body.style.overflow = 'hidden'; // Bloquea el scroll al cargar
+      if (sessionStorage.getItem('sharinganActivo')) {
         cerrarSharingan();
-        sessionStorage.removeItem("sharinganActivo");
+        sessionStorage.removeItem('sharinganActivo');
       }
     });
   </script>
 </body>
-</html>
+                                                                                                                                                                                        </html>
